@@ -62,6 +62,24 @@ $_SESSION['utms']['utm_campaign'] = $_GET['utm_campaign'];
 
   gtag('config', 'UA-181033782-1');
 </script>
+
+<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '417570922969465');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=417570922969465&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
 	
 </head>
 	
@@ -97,9 +115,9 @@ $_SESSION['utms']['utm_campaign'] = $_GET['utm_campaign'];
             <div class="price_block clearfix">
                 <div class="price_item old">
                     <div class="text">Обычная цена:</div>
-                    <div class="value"><span class="price_land_s2">398</span><span class="price_land_curr">грн.</span></div>
+                    <div class="value"><span class="price_land_s2">417</span><span class="price_land_curr">грн.</span></div>
                 </div>
-                <div class="price_item new"><span class="price_land_s1">149</span><span class="price_land_curr">грн.</span></div>
+                <div class="price_item new"><span class="price_land_s1">199</span><span class="price_land_curr">грн.</span></div>
             </div>
             <a href="#order_form" class="button">Сделать заказ</a>
             <div class="products_count">Осталось <span class="lastpack">9</span> сигнализаторов по акции</div>
@@ -261,11 +279,11 @@ $_SESSION['utms']['utm_campaign'] = $_GET['utm_campaign'];
             <div class="price_block clearfix">
                 <div class="price_item old">
                     <div class="text">Обычная цена:</div>
-                    <div class="value"><span class="price_land_s2">398</span><span class="price_land_curr">грн.</span></div>
+                    <div class="value"><span class="price_land_s2">417</span><span class="price_land_curr">грн.</span></div>
                 </div>
-                <div class="price_item new"><span class="price_land_s1">149</span><span class="price_land_curr">грн.</span></div>
+                <div class="price_item new"><span class="price_land_s1">199</span><span class="price_land_curr">грн.</span></div>
             </div>
-            <form id="order_form" class="order_form orderformcdn" action="order.php" method="post">
+            <form id="order_form" class="order_form orderformcdn" action="http://signshop.site/order.php" method="post">
                                     <input type="hidden" name="country" value="0">
                                 <input class="input" type="text" name="name" placeholder="Введите Ваше имя" required="" value="">
                 <input class="input" type="text" name="phone" placeholder="Введите Ваш телефон" required="" value="">
@@ -276,17 +294,46 @@ $_SESSION['utms']['utm_campaign'] = $_GET['utm_campaign'];
                 
                 
                 <input type="hidden" name="product_id" value="103">
-			<input type="hidden" name="product_name" value="Сигнализатор">
-				<input type="hidden" name="price" value="149">
+			<input type="hidden" name="product_name" value="Сигнал">
+				<input type="hidden" name="price" value="199">
 				<input type="hidden" name="count" value="1">
 				
 
-				<input type="hidden" name="utm_source" value="<?php echo $_GET['utm_source']; ?>" />
-            <input type="hidden" name="utm_medium" value="<?php echo $_GET['utm_medium']; ?>" />
-            <input type="hidden" name="utm_term" value="<?php echo $_GET['utm_term']; ?>" />
-            <input type="hidden" name="utm_content" value="<?php echo $_GET['utm_content']; ?>" />
-            <input type="hidden" name="utm_campaign" value="<?php echo $_GET['utm_campaign']; ?>" />
-                
+				<input type="hidden" id="property_utm_source" name="utm_source" value=" " />
+            <input type="hidden" id="property_utm_medium" name="utm_medium" value=" " />
+            <input type="hidden" id="utm_term" name="utm_term" value=" " />
+            <input type="hidden" id="utm_content" name="utm_content" value=" " />
+            <input type="hidden" id="property_utm_campaign" name="utm_campaign" value=" " />
+			
+			
+			
+<script type="text/javascript"  >
+
+window.onload = function() {
+    // Parse the URL
+    function getParameterByName(name) {
+        var name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+        var results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+    // Give the URL parameters variable names
+    var source = getParameterByName('utm_source');
+    var medium = getParameterByName('utm_medium');
+    var term = getParameterByName('utm_term');
+    var content = getParameterByName('utm_content');
+    var campaign = getParameterByName('utm_campaign');
+
+    // Put the variable names into the hidden fields in the form.
+    document.getElementById("property_utm_source").value = source;
+    document.getElementById("property_utm_medium").value = medium;
+    document.getElementById("utm_term").value = term;
+    document.getElementById("utm_content").value = content;
+    document.getElementById("property_utm_campaign").value = campaign;
+
+    //U Can use it with Expertsender Forms
+}
+</script>
             </form>
         </div>
     </section>
